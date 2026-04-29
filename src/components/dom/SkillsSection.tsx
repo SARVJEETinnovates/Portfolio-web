@@ -2,38 +2,54 @@ import { skills } from '@/store/useStore';
 import { memo, useEffect, useRef } from 'react';
 
 const skillIcons: Record<string, string> = {
-  javascript: '/js.png',
-  react: '/react.png',
-  nextjs: '/nextjs.png',
-  typescript: '/typescript.png',
-  tailwind: '/icons8-tailwind-css-48.png',
-  html5: '/html-5.png',
-  css3: '/css-3.png',
-  nodejs: '/icons8-nodejs-48.png',
-  express: '/icons8-express-js-48.png',
-  python: '/icons8-python-48.png',
-  redux: '/icons8-redux-48.png',
-  zod: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iMTAiIGZpbGw9IiMzRTdDRkYiLz4KPHBhdGggZD0iTTUwIDYwSDEzMEwxMzAgODBMNzAgMTQwSDE1MEwxNTAgMTYwSDcwTDcwIDE0MEwxMzAgODBINTBMNTAgNjBaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4=',
-  prisma: '/icons8-prisma-orm-48.png',
-  mysql: '/icons8-mysql-24.png',
-  mongodb: '/icons8-mongodb-24.png',
-  docker: '/icons8-docker-48.png',
-  git: '/icons8-git-48.png',
-  github: '/icons8-github-50.png',
-  postman: '/icons8-postman-inc-24.png',
-  vscode: '/icons8-visual-studio-48.png',
-  aws: '/icons8-aws-48.png',
-  vercel: '/icons8-vercel-50.png',
-  render: '/render.png',
-  eslint: '/icons8-eslint-48.png',
-  markdown: '/icons8-markdown-50.png',
+  html5: 'https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white',
+  css3: 'https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white',
+  typescript: 'https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white',
+  javascript: 'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black',
+  python: 'https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white',
+  nodejs: 'https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white',
+  express: 'https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white',
+  react: 'https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black',
+  nextjs: 'https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white',
+  redux: 'https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white',
+  vite: 'https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white',
+  threejs: 'https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=threedotjs&logoColor=white',
+  chartjs: 'https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white',
+  tailwind: 'https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white',
+  'material-ui': 'https://img.shields.io/badge/Material_UI-0081CB?style=for-the-badge&logo=mui&logoColor=white',
+  mongodb: 'https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white',
+  mysql: 'https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white',
+  prisma: 'https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white',
+  firebase: 'https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black',
+  kafka: 'https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white',
+  jwt: 'https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white',
+  oauth2: 'https://img.shields.io/badge/OAuth_2.0-EB5424?style=for-the-badge&logo=auth0&logoColor=white',
+  'passport.js': 'https://img.shields.io/badge/Passport.js-34E27A?style=for-the-badge&logo=passport&logoColor=white',
+  jest: 'https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white',
+  cypress: 'https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white',
+  docker: 'https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white',
+  kubernetes: 'https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white',
+  helm: 'https://img.shields.io/badge/Helm-0F1689?style=for-the-badge&logo=helm&logoColor=white',
+  'github-actions': 'https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white',
+  aws: 'https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white',
+  gcp: 'https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white',
+  nginx: 'https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white',
+  prometheus: 'https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white',
+  git: 'https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white',
+  github: 'https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white',
+  postman: 'https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white',
+  vercel: 'https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white',
+  jira: 'https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white',
+  eslint: 'https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white',
+  vscode: 'https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white',
 };
 
 const categories: Record<string, string[]> = {
   'Frontend Core': ['html5', 'css3', 'javascript', 'typescript'],
-  'Frameworks & UI': ['react', 'nextjs', 'tailwind', 'redux'],
-  'Backend & DB': ['nodejs', 'express', 'python', 'zod', 'mongodb', 'mysql', 'prisma'],
-  'DevOps & Tools': ['docker', 'aws', 'vercel', 'render', 'git', 'github', 'eslint', 'postman', 'vscode', 'markdown'],
+  'Frameworks & UI': ['react', 'nextjs', 'vite', 'tailwind', 'material-ui', 'redux', 'chartjs', 'threejs'],
+  'Backend & DB': ['nodejs', 'express', 'python', 'mongodb', 'mysql', 'prisma', 'firebase'],
+  'Auth & Testing': ['kafka', 'jwt', 'oauth2', 'passport.js', 'jest', 'cypress'],
+  'DevOps & Tools': ['docker', 'kubernetes', 'helm', 'github-actions', 'aws', 'gcp', 'nginx', 'prometheus', 'git', 'github', 'postman', 'vercel', 'jira', 'eslint', 'vscode'],
 };
 
 // Skill category with scroll animation
@@ -79,32 +95,16 @@ const SkillCategory = memo(({ categoryName, categorySkills, index }: {
         </span>
       </h3>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="flex flex-wrap gap-3 justify-start">
         {categorySkills.map((skill) => (
-          <div
+          <img
             key={skill.id}
-            className="flex items-center gap-3 p-3 rounded-lg border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-colors"
-          >
-            <div
-              className={`w-8 h-8 shrink-0 flex items-center justify-center ${
-                ['express', 'github', 'nextjs', 'vercel', 'eslint'].includes(skill.id) ? 'bg-white rounded p-1' : ''
-              }`}
-            >
-              <img 
-                src={skillIcons[skill.id]} 
-                alt={skill.name} 
-                className="w-full h-full object-contain"
-                loading="lazy"
-                decoding="async"
-                width="32"
-                height="32"
-              />
-            </div>
-            
-            <span className="text-sm font-medium text-muted-foreground">
-              {skill.name}
-            </span>
-          </div>
+            src={skillIcons[skill.id]}
+            alt={skill.name}
+            className="h-8"
+            loading="lazy"
+            decoding="async"
+          />
         ))}
       </div>
     </div>

@@ -2,6 +2,10 @@ import { skills } from '@/store/useStore';
 import { memo, useEffect, useRef } from 'react';
 
 const skillIcons: Record<string, string> = {
+  sql: 'https://img.shields.io/badge/SQL-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white',
+  'rest-api': 'https://img.shields.io/badge/REST_API-FF6B6B?style=for-the-badge&logo=postman&logoColor=white',
+  'docker-compose': 'https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white',
+  'data-structures': 'https://img.shields.io/badge/Data_Structures-336791?style=for-the-badge&logo=python&logoColor=white',
   html5: 'https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white',
   css3: 'https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white',
   typescript: 'https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white',
@@ -47,9 +51,9 @@ const skillIcons: Record<string, string> = {
 const categories: Record<string, string[]> = {
   'Frontend Core': ['html5', 'css3', 'javascript', 'typescript'],
   'Frameworks & UI': ['react', 'nextjs', 'vite', 'tailwind', 'material-ui', 'redux', 'chartjs', 'threejs'],
-  'Backend & DB': ['nodejs', 'express', 'python', 'mongodb', 'mysql', 'prisma', 'firebase'],
+  'Backend & DB': ['nodejs', 'express', 'python', 'rest-api', 'mongodb', 'mysql', 'prisma', 'firebase', 'sql'],
   'Auth & Testing': ['kafka', 'jwt', 'oauth2', 'passport.js', 'jest', 'cypress'],
-  'DevOps & Tools': ['docker', 'kubernetes', 'helm', 'github-actions', 'aws', 'gcp', 'nginx', 'prometheus', 'git', 'github', 'postman', 'vercel', 'jira', 'eslint', 'vscode'],
+  'DevOps & Tools': ['docker', 'docker-compose', 'kubernetes', 'helm', 'github-actions', 'aws', 'gcp', 'nginx', 'prometheus', 'git', 'github', 'postman', 'vercel', 'jira', 'eslint', 'vscode', 'data-structures'],
 };
 
 // Skill category with scroll animation

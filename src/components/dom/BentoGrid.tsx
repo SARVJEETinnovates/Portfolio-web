@@ -102,7 +102,7 @@ const ProjectCard = memo(({ project, index }: { project: typeof projects[0]; ind
 
       <figure className="timeline__image">
         <img 
-          src={`/${project.image === 'drk-mttr' ? 'DRLMTTR.jpg' : project.image === 'job-portal' ? 'JOB_portal.jpg' : 'Emware.ai.jpg'}`}
+          src={`/${project.image === 'nexorithm' ? 'Nexorithm.png' : project.image === 'drk-mttr' ? 'DRLMTTR.jpg' : project.image === 'job-portal' ? 'JOB_portal.jpg' : 'Emware.ai.jpg'}`}
           alt={`${project.title} - ${project.description}. Built with ${project.technologies.slice(0, 3).join(', ')}`}
           title={project.title}
           loading="lazy"

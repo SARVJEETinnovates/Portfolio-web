@@ -45,11 +45,11 @@ const Navigation = memo(() => {
           {/* Logo with proper accessibility */}
           <a
             href="#"
-            aria-label="Anand Mishra - Home"
+            aria-label="Sarvjeet Yadav - Home"
             title="Go to homepage"
             className="font-display font-bold text-2xl text-foreground hover:text-primary transition-colors"
           >
-            AM<span className="text-primary">.</span>
+            SY<span className="text-primary">.</span>
           </a>
 
           <div className="hidden md:flex items-center gap-8">

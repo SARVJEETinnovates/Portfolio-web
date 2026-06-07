@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anandmishra.dev/sitemap.xml
+Sitemap: https://sarvjeetyadav.dev/sitemap.xml

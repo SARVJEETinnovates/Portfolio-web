@@ -1,5 +1,5 @@
 import { projects } from '@/store/useStore';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import { memo, useEffect, useRef } from 'react';
 
 // Memoized project card with scroll animations
@@ -86,30 +86,21 @@ const ProjectCard = memo(({ project, index }: { project: typeof projects[0]; ind
               Live Demo
             </a>
           )}
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground rounded-lg font-medium hover:bg-muted transition-colors"
-            >
-              <FaGithub className="w-4 h-4" />
-              View Code
-            </a>
-          )}
         </div>
       </div>
 
       <figure className="timeline__image">
         <img 
-          src={`/${project.image === 'nexorithm' ? 'Nexorithm.png' : project.image === 'drk-mttr' ? 'DRLMTTR.jpg' : project.image === 'job-portal' ? 'JOB_portal.jpg' : 'Emware.ai.jpg'}`}
+          src={`/${project.image === 'nexorithm' ? 'Nexorithm.png' : project.image === 'drk-mttr' ? 'DRLMTTR.jpg' : project.image === 'job-portal' ? 'JOB_portal.jpg' : project.image === 'emware-ai' ? 'Emware.ai.jpg' : project.image === 'eats' ? 'Eats.png' : "Paul's.png"}`}
           alt={`${project.title} - ${project.description}. Built with ${project.technologies.slice(0, 3).join(', ')}`}
           title={project.title}
           loading="lazy"
           decoding="async"
           width="400"
           height="300"
-          className="w-full h-full object-cover"
+          className={`w-full h-full ${
+            project.image === 'eats' || project.image === 'pauls' ? 'object-contain' : 'object-cover'
+          }`}
         />
       </figure>
     </article>

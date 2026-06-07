@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { SiLeetcode } from 'react-icons/si';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
 
@@ -42,7 +41,7 @@ const ContactSection = () => {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
 
       if (serviceId === 'YOUR_SERVICE_ID' || !serviceId) {
-        toast.error('Email service not configured. Please contact me at anandmishra3001@gmail.com');
+        toast.error('Email service not configured. Please contact me at sarvjeetyadav2969@gmail.com');
         setIsSubmitting(false);
         return;
       }
@@ -51,7 +50,7 @@ const ContactSection = () => {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
-        to_email: 'anandmishra3001@gmail.com',
+        to_email: 'sarvjeetyadav2969@gmail.com',
       };
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
@@ -61,7 +60,7 @@ const ContactSection = () => {
       setEmailValid(true);
     } catch (error) {
       console.error('Email send error:', error);
-      toast.error('Failed to send message. Please try again or email me directly at anandmishra3001@gmail.com');
+      toast.error('Failed to send message. Please try again or email me directly at sarvjeetyadav2969@gmail.com');
     } finally {
       setIsSubmitting(false);
     }
@@ -70,25 +69,19 @@ const ContactSection = () => {
   const socialLinks = [
     { 
       label: 'GitHub', 
-      href: 'https://github.com/anand-242003', 
+      href: 'https://github.com/SARVJEETinnovates', 
       icon: FaGithub,
       color: 'hover:text-[#333] dark:hover:text-white'
     },
     { 
       label: 'LinkedIn', 
-      href: 'https://www.linkedin.com/in/anand-mishra-a3a306225/', 
+      href: 'https://www.linkedin.com/in/sarvjeetyadav2969/', 
       icon: FaLinkedin,
       color: 'hover:text-[#0077b5]'
     },
     { 
-      label: 'LeetCode', 
-      href: 'https://leetcode.com/u/Sir_anand/', 
-      icon: SiLeetcode,
-      color: 'hover:text-[#FFA116]'
-    },
-    { 
       label: 'Email', 
-      href: 'mailto:anandmishra3001@gmail.com', 
+      href: 'mailto:sarvjeetyadav2969@gmail.com', 
       icon: FaEnvelope,
       color: 'hover:text-[#EA4335]'
     },

@@ -5,8 +5,7 @@ import BentoGrid from '@/components/dom/BentoGrid';
 import SkillsSection from '@/components/dom/SkillsSection';
 import ContactSection from '@/components/dom/ContactSection';
 import Footer from '@/components/dom/Footer';
-
-const DataFlowLines = lazy(() => import('@/components/canvas/DataFlowLines'));
+import { SplineAnimation } from '@/components/canvas/SplineAnimation';
 
 const Canvas3DFallback = () => (
   <div className="absolute inset-0 bg-gradient-radial from-muted/20 to-transparent" aria-hidden="true" />
@@ -28,9 +27,14 @@ const Index = () => {
           className="relative h-screen overflow-hidden bg-background"
           aria-label="Introduction"
         >
-          <Suspense fallback={<Canvas3DFallback />}>
-            <DataFlowLines />
-          </Suspense>
+          {/* Background Spline - Interactive Layer */}
+          <div className="absolute inset-0 z-0">
+            <Suspense fallback={<Canvas3DFallback />}>
+              <SplineAnimation scene="https://prod.spline.design/3yefatOWqMXP5p6l/scene.splinecode" />
+            </Suspense>
+          </div>
+          
+          {/* Hero Text - On top but stays interactive */}
           <HeroText />
         </section>
 

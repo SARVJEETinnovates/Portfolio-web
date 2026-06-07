@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { SiLeetcode } from 'react-icons/si';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,25 +7,19 @@ const Footer = () => {
   const socialLinks = [
     { 
       label: 'GitHub', 
-      href: 'https://github.com/anand-242003', 
+      href: 'https://github.com/SARVJEETinnovates', 
       icon: FaGithub,
       color: 'hover:text-[#333] dark:hover:text-white'
     },
     { 
       label: 'LinkedIn', 
-      href: 'https://www.linkedin.com/in/anand-mishra-a3a306225/', 
+      href: 'https://www.linkedin.com/in/sarvjeetyadav2969/', 
       icon: FaLinkedin,
       color: 'hover:text-[#0077b5]'
     },
     { 
-      label: 'LeetCode', 
-      href: 'https://leetcode.com/u/Sir_anand/', 
-      icon: SiLeetcode,
-      color: 'hover:text-[#FFA116]'
-    },
-    { 
       label: 'Email', 
-      href: 'mailto:anandmishra3001@gmail.com', 
+      href: 'mailto:sarvjeetyadav2969@gmail.com', 
       icon: FaEnvelope,
       color: 'hover:text-[#EA4335]'
     },
@@ -42,7 +35,7 @@ const Footer = () => {
             className="font-display font-bold text-2xl text-foreground hover:text-primary transition-colors"
             whileHover={{ scale: 1.05 }}
           >
-            AM<span className="text-primary">.</span>
+            SY<span className="text-primary">.</span>
           </motion.a>
 
           <div className="flex items-center gap-6">
@@ -73,7 +66,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-muted-foreground text-sm font-mono">
-              © {currentYear} Anand Mishra
+              © {currentYear} Sarvjeet Yadav
             </p>
           </div>
         </div>

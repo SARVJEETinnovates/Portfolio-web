@@ -3,7 +3,7 @@ import { memo } from 'react';
 const HeroText = memo(() => {
   return (
     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-      <article className="text-center px-6 max-w-6xl pointer-events-auto animate-fade-in" itemScope itemType="https://schema.org/Person">
+      <article className="text-center px-6 max-w-6xl pointer-events-none animate-fade-in" itemScope itemType="https://schema.org/Person">
         {/* Role/Title with semantic markup */}
         <div className="mb-8">
           <p className="inline-flex items-center gap-2 text-sm font-mono text-muted-foreground uppercase tracking-[0.3em]" itemProp="jobTitle">
@@ -15,7 +15,7 @@ const HeroText = memo(() => {
         {/* Primary H1 - only one per page for SEO */}
         <div className="mb-8">
           <h1 className="text-7xl md:text-8xl lg:text-[10rem] font-bold text-foreground leading-none tracking-tight" itemProp="name">
-            Anand Mishra
+            Sarvjeet Yadav
           </h1>
         </div>
 
@@ -25,22 +25,22 @@ const HeroText = memo(() => {
         </p>
         
         {/* Hidden SEO content for crawlers */}
-        <meta itemProp="url" content="https://anandmishra.dev" />
-        <meta itemProp="email" content="anandmishra3001@gmail.com" />
+        <meta itemProp="url" content="https://sarvjeetyadav.dev" />
+        <meta itemProp="email" content="sarvjeetyadav2969@gmail.com" />
 
         {/* Call-to-action buttons with proper accessibility */}
-        <nav className="flex flex-col sm:flex-row gap-4 justify-center items-center" aria-label="Quick navigation">
+        <nav className="flex flex-col sm:flex-row gap-4 justify-center items-center pointer-events-auto" aria-label="Quick navigation">
           <button
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
+            className="pointer-events-auto px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
             aria-label="View my projects and portfolio work"
           >
             View Projects
           </button>
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-3 border border-border rounded-lg hover:bg-accent transition-colors font-medium"
-            aria-label="Contact Anand Mishra for collaboration"
+            className="pointer-events-auto px-8 py-3 border border-border rounded-lg hover:bg-accent transition-colors font-medium"
+            aria-label="Contact Sarvjeet Yadav for collaboration"
           >
             Get In Touch
           </button>

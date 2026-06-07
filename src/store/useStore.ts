@@ -170,21 +170,6 @@ export const skills: Skill[] = [
 
 export const projects: Project[] = [
   {
-    id: 'nexorithm',
-    title: 'Nexorithm',
-    description: 'Full-stack competitive programming platform with real-time judging engine',
-    longDescription: 'Competitive programming platform with LeetCode-style problems, Monaco Editor, and multi-language real-time verdicts. Built with React + Vite, Node.js/Express 5/TypeScript, MongoDB, Docker CI/CD, and resilient API fallback fetching.',
-    technologies: ['React', 'Vite', 'Node.js', 'Express 5', 'TypeScript', 'MongoDB', 'Docker', 'Docker Compose', 'GitHub Actions', 'JWT', 'Google OAuth', 'k6'],
-    metrics: [
-      { label: 'Domain', value: 'CP Platform' },
-      { label: 'Backend', value: 'Express 5' },
-      { label: 'Date', value: 'Feb 2026' },
-    ],
-    image: 'nexorithm',
-    link: 'https://app.anandmishra.dev/',
-    github: 'https://github.com/anand-242003/Nexorithm',
-  },
-  {
     id: 'drk-mttr',
     title: 'DRK/MTTR',
     description: 'Influencer marketing platform connecting brands with YouTube creators',
@@ -197,7 +182,7 @@ export const projects: Project[] = [
     ],
     image: 'drk-mttr',
     link: 'https://nanoreach.vercel.app/',
-    github: 'https://github.com/anand-242003/nanoreach-platform',
+    github: 'https://github.com/SARVJEETinnovates/project-repo',
   },
   {
     id: 'job-portal',
@@ -212,7 +197,7 @@ export const projects: Project[] = [
     ],
     image: 'job-portal',
     link: 'https://jobportal-frontend-navy-xi.vercel.app/',
-    github: 'https://github.com/anand-242003/jobportal',
+    github: 'https://github.com/SARVJEETinnovates/project-repo',
   },
   {
     id: 'emware-ai',
@@ -227,6 +212,36 @@ export const projects: Project[] = [
     ],
     image: 'emware-ai',
     link: 'https://em-ware-ai-ia16.vercel.app/',
-    github: 'https://github.com/anand-242003/EMWare.Ai',
+    github: 'https://github.com/SARVJEETinnovates/project-repo',
+  },
+  {
+    id: 'eats',
+    title: 'Eats',
+    description: 'Food delivery platform with real-time order tracking',
+    longDescription: 'A comprehensive food delivery platform enabling customers to browse restaurants, place orders, and track delivery in real-time. Built with React, Node.js, Express, MongoDB, and integrating payment gateway and location services.',
+    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Geolocation API', 'Payment Gateway'],
+    metrics: [
+      { label: 'Type', value: 'Food Delivery' },
+      { label: 'Tracking', value: 'Real-time' },
+      { label: 'Database', value: 'MongoDB' },
+    ],
+    image: 'eats',
+    link: 'https://eatindia.vercel.app/',
+    github: 'https://github.com/SARVJEETinnovates/project-repo',
+  },
+  {
+    id: 'pauls-biryani',
+    title: "Paul's Biryani",
+    description: 'Restaurant ordering platform specializing in authentic biryani',
+    longDescription: "A dedicated restaurant ordering platform for Paul's Biryani featuring menu management, order booking, customer reviews, and delivery integration. Built with React, Node.js, Express, MongoDB, and Stripe for payments.",
+    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'Tailwind CSS', 'JWT'],
+    metrics: [
+      { label: 'Type', value: 'Restaurant App' },
+      { label: 'Payment', value: 'Stripe' },
+      { label: 'Auth', value: 'JWT' },
+    ],
+    image: 'pauls',
+    link: 'https://biryani-puce.vercel.app/',
+    github: 'https://github.com/SARVJEETinnovates/project-repo',
   },
 ];

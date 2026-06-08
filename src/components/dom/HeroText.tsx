@@ -73,69 +73,43 @@ const HeroText = memo(() => {
           >
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group pointer-events-auto px-8 py-4 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl hover:shadow-[0_0_40px_rgba(204,255,0,0.7)] transition-all duration-300 font-semibold relative overflow-hidden"
+              className="group pointer-events-auto px-8 py-4 bg-primary text-primary-foreground rounded-xl hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all duration-300 font-semibold relative overflow-hidden"
               aria-label="Contact Sarvjeet Yadav"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <motion.span
-                  animate={{ x: [0, 2, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  Contact Me
-                </motion.span>
-                <motion.svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
+                Contact Me
+                <motion.svg 
+                  className="w-5 h-5" 
+                  fill="none" 
+                  stroke="currentColor" 
                   viewBox="0 0 24 24"
-                  animate={{ x: [0, 3, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </motion.svg>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/30 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-              
-              {/* Pulse effect on hover */}
-              <motion.div
-                className="absolute inset-0 rounded-xl"
-                initial={{ boxShadow: '0 0 0 0 rgba(204, 255, 0, 0.7)' }}
-                whileHover={{ boxShadow: ['0 0 0 0 rgba(204, 255, 0, 0.7)', '0 0 0 15px rgba(204, 255, 0, 0)'] }}
-                transition={{ duration: 0.6 }}
-              />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
             </button>
             
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group pointer-events-auto px-8 py-4 border-2 border-border backdrop-blur-sm bg-background/50 text-foreground rounded-xl hover:border-primary hover:bg-background/70 transition-all duration-300 font-semibold relative overflow-hidden"
+              className="group pointer-events-auto px-8 py-4 border-2 border-border backdrop-blur-sm bg-background/50 text-foreground rounded-xl hover:border-primary hover:bg-background/70 transition-all duration-300 font-semibold"
               aria-label="View projects"
             >
-              <span className="flex items-center gap-3">
-                <span>Discover</span>
-                <motion.svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
+              <span className="flex items-center gap-2">
+                Discover
+                <motion.svg 
+                  className="w-5 h-5" 
+                  fill="none" 
+                  stroke="currentColor" 
                   viewBox="0 0 24 24"
-                  animate={{ y: [0, 6, 0], rotate: [0, 10, 0] }}
+                  animate={{ y: [0, 3, 0] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </motion.svg>
               </span>
-              
-              {/* Shimmer effect */}
-              <motion.div
-                className="absolute inset-0 rounded-xl"
-                animate={{ 
-                  background: [
-                    'linear-gradient(90deg, transparent, transparent)',
-                    'linear-gradient(90deg, transparent, rgba(204, 255, 0, 0.2))',
-                    'linear-gradient(90deg, transparent, transparent)'
-                  ]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
             </button>
           </motion.nav>
 
@@ -233,56 +207,32 @@ const HeroText = memo(() => {
       {/* Scroll indicator - Enhanced and positioned better */}
       <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true">
         <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-3"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2"
         >
-          <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground animate-pulse">Scroll</span>
+          <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Scroll down</span>
           
-          {/* Animated scroll icon with enhanced design */}
-          <div className="relative w-6 h-10 border-2 border-primary/60 rounded-full flex items-center justify-center group hover:border-primary transition-colors">
+          {/* Animated scroll icon */}
+          <div className="relative w-6 h-10 border-2 border-primary/50 rounded-full flex items-center justify-center">
             <motion.div
-              animate={{ y: [0, 8, 0] }}
+              animate={{ y: [0, 6, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1.5 h-2.5 bg-gradient-to-b from-primary to-primary/60 rounded-full"
+              className="w-1 h-2 bg-primary rounded-full"
             />
           </div>
 
-          {/* Enhanced chevrons with staggered animation */}
-          <div className="flex flex-col items-center gap-1">
-            <motion.svg
-              className="w-5 h-5 text-primary"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              animate={{ y: [0, 4, 0], opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </motion.svg>
-            
-            <motion.svg
-              className="w-5 h-5 text-primary"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              animate={{ y: [0, 4, 0], opacity: [0.2, 0.6, 0.2] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </motion.svg>
-            
-            <motion.svg
-              className="w-5 h-5 text-primary"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              animate={{ y: [0, 4, 0], opacity: [0, 0.4, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </motion.svg>
-          </div>
+          {/* Chevrons */}
+          <motion.svg
+            animate={{ y: [0, 4, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+            className="w-5 h-5 text-primary"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </motion.svg>
         </motion.div>
       </div>
         

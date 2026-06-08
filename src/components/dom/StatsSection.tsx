@@ -71,7 +71,7 @@ const StatCard = ({ end, duration, suffix = '', label }: { end: number; duration
 
 const StatsSection = () => {
   const stats = [
-    { end: 4, suffix: '+', label: 'Clients Served', duration: 2000 },
+    { end: 6, suffix: '+', label: 'Clients Served', duration: 2000 },
     { end: 40, suffix: '+', label: 'Technologies Mastered', duration: 2500 },
     { end: 100, suffix: '%', label: 'Client Satisfaction', duration: 2000 },
     { end: 3, suffix: '+', label: 'Years Experience', duration: 1500 },

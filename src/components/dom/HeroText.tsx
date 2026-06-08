@@ -10,8 +10,8 @@ const HeroText = memo(() => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4 md:px-8">
-      <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12">
+    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-3 xs:px-4 sm:px-6 md:px-8">
+      <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
         
         {/* Left side - Text content */}
         <article className="flex-1 pointer-events-none space-y-8" itemScope itemType="https://schema.org/Person">
@@ -23,7 +23,7 @@ const HeroText = memo(() => {
             transition={{ duration: 0.6, delay: loadingComplete ? 0.2 : 0 }}
             className="mb-4"
           >
-            <p className="text-xl md:text-2xl text-muted-foreground font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-light">
               Hi There, it's
             </p>
           </motion.div>
@@ -35,7 +35,7 @@ const HeroText = memo(() => {
             transition={{ duration: 0.6, delay: loadingComplete ? 0.4 : 0 }}
             className="mb-6"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight" itemProp="name">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight" itemProp="name">
               <motion.span 
                 className="inline-block bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent text-shadow-lg"
                 animate={{ 
@@ -74,12 +74,12 @@ const HeroText = memo(() => {
             transition={{ duration: 0.6, delay: loadingComplete ? 0.6 : 0 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 backdrop-blur-sm bg-muted/20 px-5 py-3 rounded-full border border-primary/30">
-              <span className="relative flex h-3 w-3">
+            <div className="inline-flex items-center gap-2 sm:gap-3 backdrop-blur-sm bg-muted/20 px-3 sm:px-5 py-2 sm:py-3 rounded-full border border-primary/30">
+              <span className="relative flex h-2 sm:h-3 w-2 sm:w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                <span className="relative inline-flex rounded-full h-2 sm:h-3 w-2 sm:w-3 bg-primary"></span>
               </span>
-              <span className="text-sm font-mono text-foreground uppercase tracking-wider" itemProp="jobTitle">
+              <span className="text-xs sm:text-sm font-mono text-foreground uppercase tracking-wider" itemProp="jobTitle">
                 Full Stack Developer & AI Engineer
               </span>
             </div>
@@ -90,7 +90,7 @@ const HeroText = memo(() => {
             initial={{ opacity: 0, y: 20 }}
             animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: loadingComplete ? 0.8 : 0 }}
-            className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mb-10"
+            className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mb-10"
             itemProp="description"
           >
             Turning Visions into Reality: Seamlessly crafted web experiences and cutting-edge AI solutions, empowering businesses to thrive in the digital age.
@@ -101,18 +101,18 @@ const HeroText = memo(() => {
             initial={{ opacity: 0, y: 20 }}
             animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: loadingComplete ? 1 : 0 }}
-            className="flex flex-wrap gap-4 pointer-events-auto"
+            className="flex flex-wrap gap-3 sm:gap-4 pointer-events-auto"
             aria-label="Quick navigation"
           >
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group pointer-events-auto px-8 py-4 bg-primary text-primary-foreground rounded-xl hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all duration-300 font-semibold relative overflow-hidden"
+              className="group pointer-events-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-primary text-primary-foreground rounded-xl hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all duration-300 font-semibold relative overflow-hidden"
               aria-label="Contact Sarvjeet Yadav"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Contact Me
                 <motion.svg 
-                  className="w-5 h-5" 
+                  className="w-4 sm:w-5 h-4 sm:h-5" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -128,13 +128,13 @@ const HeroText = memo(() => {
             
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group pointer-events-auto px-8 py-4 border-2 border-border backdrop-blur-sm bg-background/50 text-foreground rounded-xl hover:border-primary hover:bg-background/70 transition-all duration-300 font-semibold"
+              className="group pointer-events-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base border-2 border-border backdrop-blur-sm bg-background/50 text-foreground rounded-xl hover:border-primary hover:bg-background/70 transition-all duration-300 font-semibold"
               aria-label="View projects"
             >
               <span className="flex items-center gap-2">
                 Discover
                 <motion.svg 
-                  className="w-5 h-5" 
+                  className="w-4 sm:w-5 h-4 sm:h-5" 
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -153,16 +153,16 @@ const HeroText = memo(() => {
             initial={{ opacity: 0 }}
             animate={loadingComplete ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.6, delay: loadingComplete ? 1.2 : 0 }}
-            className="mt-12 flex items-center gap-8 text-sm text-muted-foreground"
+            className="mt-12 flex flex-wrap items-center gap-4 sm:gap-8 text-sm text-muted-foreground"
           >
             <div>
-              <div className="text-3xl font-bold text-primary">3+</div>
+              <div className="text-2xl sm:text-3xl font-bold text-primary">3+</div>
               <div className="text-xs uppercase tracking-wider">Years Experience</div>
             </div>
-            <div className="h-12 w-px bg-border"></div>
+            <div className="hidden sm:block h-12 w-px bg-border"></div>
             <div>
-              <div className="text-3xl font-bold text-primary">10+</div>
-              <div className="text-xs uppercase tracking-wider">Projects Completed</div>
+              <div className="text-2xl sm:text-3xl font-bold text-primary">15+</div>
+              <div className="text-xs uppercase tracking-wider">Projects Delivered</div>
             </div>
           </motion.div>
         </article>

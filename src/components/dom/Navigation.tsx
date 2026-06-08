@@ -17,7 +17,7 @@ const Navigation = memo(() => {
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' },
-    { label: 'Resume', href: 'https://drive.google.com/file/d/1Zvinh6Fzt1iWPnoGvVM6WWIBrR_LOtZK/view?usp=sharing', external: true },
+    // { label: 'Resume', href: 'https://drive.google.com/file/d/1Zvinh6Fzt1iWPnoGvVM6WWIBrR_LOtZK/view?usp=sharing', external: true },
   ];
 
   const scrollToSection = (href: string, external?: boolean) => {

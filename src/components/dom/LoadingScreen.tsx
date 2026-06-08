@@ -1,9 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+interface FallingCharacter {
+  id: number;
+  char: string;
+  xPosition: number;
+  delay: number;
+  duration: number;
+}
 
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+
+  // Generate falling characters once
+  const fallingCharacters = useMemo(() => {
+    const codeCharacters = ['<', '>', '{', '}', '[', ']', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '=', '+', '-', '*'];
+    const characters: FallingCharacter[] = [];
+    
+    for (let i = 0; i < 20; i++) {
+      characters.push({
+        id: i,
+        char: codeCharacters[Math.floor(Math.random() * codeCharacters.length)],
+        xPosition: Math.random() * 100,
+        delay: Math.random() * 2,
+        duration: 4 + Math.random() * 4,
+      });
+    }
+    
+    return characters;
+  }, []);
 
   useEffect(() => {
     // Simulate loading progress
@@ -49,42 +75,67 @@ const LoadingScreen = () => {
           transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[9999] bg-gradient-to-br from-background via-background/95 to-background flex flex-col items-center justify-center overflow-hidden"
         >
+          {/* Falling code characters background */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {fallingCharacters.map((charData) => (
+              <motion.div
+                key={charData.id}
+                initial={{
+                  y: -50,
+                  x: `${charData.xPosition}%`,
+                  opacity: 0,
+                  rotate: 0,
+                }}
+                animate={{
+                  y: typeof window !== 'undefined' ? window.innerHeight + 50 : 1000,
+                  opacity: [0, 0.6, 0.3, 0],
+                  rotate: 360,
+                }}
+                transition={{
+                  duration: charData.duration,
+                  delay: charData.delay,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  opacity: {
+                    times: [0, 0.2, 0.8, 1],
+                    duration: charData.duration,
+                  },
+                  rotate: {
+                    duration: charData.duration * 0.6,
+                    repeat: Infinity,
+                  },
+                }}
+                className="absolute text-4xl font-mono font-bold text-primary/30"
+              >
+                {charData.char}
+              </motion.div>
+            ))}
+          </div>
+
           {/* Animated background elements */}
-          <div className="absolute inset-0 pointer-events-none">
-            {/* Primary gradient blob */}
+          <div className="absolute inset-0 overflow-hidden">
             <motion.div
               animate={{ 
-                x: [0, 40, -30, 0],
-                y: [0, -40, 30, 0],
-                scale: [1, 1.4, 0.8, 1],
+                rotate: 360,
+                scale: [1, 1.2, 1],
               }}
-              transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-1/2 -left-1/3 w-[500px] h-[500px] bg-gradient-to-br from-primary/40 to-primary/10 rounded-full blur-3xl opacity-60"
+              transition={{ 
+                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+              }}
+              className="absolute -top-1/2 -right-1/2 w-full h-full rounded-full border border-primary/20 opacity-40"
             />
-            
-            {/* Secondary gradient blob */}
             <motion.div
               animate={{ 
-                x: [0, -40, 30, 0],
-                y: [0, 40, -30, 0],
-                scale: [1, 0.8, 1.4, 1],
+                rotate: -360,
+                scale: [1, 0.8, 1],
               }}
-              transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-1/2 -right-1/3 w-[500px] h-[500px] bg-gradient-to-tl from-primary/30 to-primary/5 rounded-full blur-3xl opacity-50"
-            />
-
-            {/* Tertiary accent blob */}
-            <motion.div
-              animate={{ 
-                scale: [0.8, 1.2, 0.8],
-                opacity: [0.2, 0.5, 0.2],
+              transition={{ 
+                rotate: { duration: 30, repeat: Infinity, ease: "linear" },
+                scale: { duration: 10, repeat: Infinity, ease: "easeInOut" },
               }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/3 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 rounded-full blur-2xl"
+              className="absolute -bottom-1/2 -left-1/2 w-full h-full rounded-full border border-primary/10 opacity-30"
             />
-
-            {/* Grid pattern overlay */}
-            <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-5" />
           </div>
 
           {/* Main content */}

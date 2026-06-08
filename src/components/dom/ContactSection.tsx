@@ -201,27 +201,57 @@ const ContactSection = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting || !emailValid}
-                    className="group relative px-10 py-4 text-base bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl font-bold hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 overflow-hidden"
+                    className="group relative px-10 py-4 text-base bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl font-bold hover:shadow-[0_0_40px_rgba(204,255,0,0.7)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       {isSubmitting ? (
                         <>
-                          <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                          <motion.svg
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, repeat: Infinity }}
+                            className="h-5 w-5"
+                            viewBox="0 0 24 24"
+                          >
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                          </svg>
-                          Sending...
+                          </motion.svg>
+                          <motion.span
+                            animate={{ opacity: [1, 0.5, 1] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            Sending...
+                          </motion.span>
                         </>
                       ) : (
                         <>
-                          Send Message
-                          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <motion.span
+                            animate={{ x: [0, 2, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                          >
+                            Send Message
+                          </motion.span>
+                          <motion.svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+                          >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                          </svg>
+                          </motion.svg>
                         </>
                       )}
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/30 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                    
+                    {/* Pulse effect on hover */}
+                    <motion.div
+                      className="absolute inset-0 rounded-xl"
+                      initial={{ boxShadow: '0 0 0 0 rgba(204, 255, 0, 0.7)' }}
+                      whileHover={{ boxShadow: ['0 0 0 0 rgba(204, 255, 0, 0.7)', '0 0 0 20px rgba(204, 255, 0, 0)'] }}
+                      transition={{ duration: 0.6 }}
+                    />
                   </button>
                 </div>
               </fieldset>

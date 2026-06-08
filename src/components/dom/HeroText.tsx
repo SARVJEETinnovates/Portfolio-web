@@ -167,25 +167,23 @@ const HeroText = memo(() => {
           </motion.div>
         </article>
 
-        {/* Right side - Profile Image Section */}
-        <div className="hidden lg:flex flex-1 items-center justify-center pointer-events-none relative h-full">
+        {/* Right side - Profile Image Section - Now responsive on all screens */}
+        <div className="flex md:flex-1 items-center justify-center pointer-events-none relative h-auto md:h-full w-full md:w-auto mt-8 md:mt-0">
           {/* Full image display - scaled to fit layout */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: loadingComplete ? 1 : 0 }}
             whileHover={{ scale: 1.05 }}
-            className="relative w-full max-w-sm drop-shadow-2xl"
+            className="relative w-full max-w-xs sm:max-w-sm md:max-w-md drop-shadow-2xl"
           >
             {/* Subtle glow background */}
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-teal-900/5 to-transparent rounded-3xl blur-2xl -z-10" />
             
-            {/* Image container - circular with clipping */}
+            {/* Image container - circular with clipping - Responsive sizing */}
             <div 
-              className="relative rounded-full overflow-hidden border-2 border-cyan-400/40"
+              className="relative rounded-full overflow-hidden border-2 border-cyan-400/40 aspect-square"
               style={{
-                width: '384px',    // Change this to adjust ring width (e.g., '320px', '400px', '450px')
-                height: '460px',   // Change this to adjust ring height (e.g., '320px', '400px', '450px')
                 boxShadow: '0 0 40px rgba(34, 211, 238, 0.4), inset 0 1px 20px rgba(255, 255, 255, 0.1)',
               }}
             >

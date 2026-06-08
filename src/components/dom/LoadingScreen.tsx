@@ -6,9 +6,9 @@ const generateRainDroplets = (count: number) => {
   return Array.from({ length: count }).map((_, i) => ({
     id: i,
     left: Math.random() * 100,
-    delay: Math.random() * 3,
+    delay: 0,
     duration: 3 + Math.random() * 5,
-    height: 60 + Math.random() * 100,
+    height: 60 + Math.random() * 60,
     width: 2 + Math.random() * 1.5,
   }));
 };
@@ -16,7 +16,7 @@ const generateRainDroplets = (count: number) => {
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [rainDroplets] = useState(() => generateRainDroplets(70));
+  const [rainDroplets] = useState(() => generateRainDroplets(50));
 
   useEffect(() => {
     // Simulate loading progress
@@ -64,7 +64,9 @@ const LoadingScreen = () => {
         >
           {/* Rain effect background */}
           <div className="absolute inset-0 overflow-hidden">
-            {rainDroplets.map((droplet) => (
+            {rainDroplets
+              .filter((droplet) => droplet.left < 30 || droplet.left > 70)
+              .map((droplet) => (
               <motion.div
                 key={droplet.id}
                 className="absolute rounded-full pointer-events-none"
@@ -72,13 +74,13 @@ const LoadingScreen = () => {
                   left: `${droplet.left}%`,
                   width: `${droplet.width}px`,
                   height: `${droplet.height}px`,
-                  background: 'linear-gradient(to bottom, rgba(204, 255, 0, 0.8) 0%, rgba(204, 255, 0, 0.2) 100%)',
-                  boxShadow: '0 0 16px rgba(204, 255, 0, 0.7), 0 0 32px rgba(204, 255, 0, 0.4)',
+                  background: 'linear-gradient(to bottom, rgba(204, 255, 0, 0.6) 0%, rgba(204, 255, 0, 0.15) 100%)',
+                  boxShadow: '0 0 8px rgba(204, 255, 0, 0.4), 0 0 16px rgba(204, 255, 0, 0.2)',
                 }}
                 initial={{ y: -100, opacity: 0 }}
                 animate={{
                   y: typeof window !== 'undefined' ? window.innerHeight + 100 : 800,
-                  opacity: [0, 0.7, 0.7, 0],
+                  opacity: [0, 0.4, 0.4, 0],
                 }}
                 transition={{
                   duration: droplet.duration,

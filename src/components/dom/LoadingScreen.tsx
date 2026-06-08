@@ -8,14 +8,15 @@ const generateRainDroplets = (count: number) => {
     left: Math.random() * 100,
     delay: Math.random() * 3,
     duration: 3 + Math.random() * 5,
-    height: 40 + Math.random() * 60,
+    height: 60 + Math.random() * 100,
+    width: 2 + Math.random() * 1.5,
   }));
 };
 
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [rainDroplets] = useState(() => generateRainDroplets(35));
+  const [rainDroplets] = useState(() => generateRainDroplets(70));
 
   useEffect(() => {
     // Simulate loading progress
@@ -66,17 +67,18 @@ const LoadingScreen = () => {
             {rainDroplets.map((droplet) => (
               <motion.div
                 key={droplet.id}
-                className="absolute w-px rounded-full pointer-events-none"
+                className="absolute rounded-full pointer-events-none"
                 style={{
                   left: `${droplet.left}%`,
+                  width: `${droplet.width}px`,
                   height: `${droplet.height}px`,
-                  background: 'linear-gradient(to bottom, rgba(204, 255, 0, 0.6) 0%, rgba(204, 255, 0, 0.1) 100%)',
-                  boxShadow: '0 0 8px rgba(204, 255, 0, 0.3)',
+                  background: 'linear-gradient(to bottom, rgba(204, 255, 0, 0.8) 0%, rgba(204, 255, 0, 0.2) 100%)',
+                  boxShadow: '0 0 16px rgba(204, 255, 0, 0.7), 0 0 32px rgba(204, 255, 0, 0.4)',
                 }}
                 initial={{ y: -100, opacity: 0 }}
                 animate={{
                   y: typeof window !== 'undefined' ? window.innerHeight + 100 : 800,
-                  opacity: [0, 0.2, 0.2, 0],
+                  opacity: [0, 0.7, 0.7, 0],
                 }}
                 transition={{
                   duration: droplet.duration,

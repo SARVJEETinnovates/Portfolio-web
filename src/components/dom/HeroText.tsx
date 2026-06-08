@@ -10,11 +10,11 @@ const HeroText = memo(() => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-3 xs:px-4 sm:px-6 md:px-8">
-      <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8">
+      <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-10 lg:gap-12">
         
         {/* Left side - Text content */}
-        <article className="flex-1 pointer-events-none space-y-8" itemScope itemType="https://schema.org/Person">
+        <article className="flex-1 pointer-events-none space-y-6 sm:space-y-8 w-full" itemScope itemType="https://schema.org/Person">
         
           {/* Greeting line */}
           <motion.div
@@ -35,7 +35,7 @@ const HeroText = memo(() => {
             transition={{ duration: 0.6, delay: loadingComplete ? 0.4 : 0 }}
             className="mb-6"
           >
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight" itemProp="name">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] tracking-tight" itemProp="name">
               <motion.span 
                 className="inline-block bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent text-shadow-lg"
                 animate={{ 
@@ -167,8 +167,8 @@ const HeroText = memo(() => {
           </motion.div>
         </article>
 
-        {/* Right side - Profile Image Section - Now responsive on all screens */}
-        <div className="flex md:flex-1 items-center justify-center pointer-events-none relative h-auto md:h-full w-full md:w-auto mt-8 md:mt-0">
+        {/* Right side - Profile Image Section */}
+        <div className="flex md:flex-1 items-center justify-center pointer-events-none relative h-auto md:h-full w-full md:w-auto">
           {/* Full image display - scaled to fit layout */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -180,10 +180,13 @@ const HeroText = memo(() => {
             {/* Subtle glow background */}
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-teal-900/5 to-transparent rounded-3xl blur-2xl -z-10" />
             
-            {/* Image container - circular with clipping - Responsive sizing */}
+            {/* Image container - circular with clipping */}
             <div 
-              className="relative rounded-full overflow-hidden border-2 border-cyan-400/40 aspect-square"
+              className="relative rounded-full overflow-hidden border-2 border-cyan-400/40"
               style={{
+                width: '100%',
+                maxWidth: '384px',
+                aspectRatio: '384 / 460',
                 boxShadow: '0 0 40px rgba(34, 211, 238, 0.4), inset 0 1px 20px rgba(255, 255, 255, 0.1)',
               }}
             >
@@ -202,7 +205,7 @@ const HeroText = memo(() => {
       </div>
 
       {/* Scroll indicator - Enhanced and positioned better */}
-      <div className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true">
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true">
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -211,7 +214,7 @@ const HeroText = memo(() => {
           <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Scroll down</span>
           
           {/* Animated scroll icon */}
-          <div className="relative w-6 h-10 border-2 border-primary/50 rounded-full flex items-center justify-center">
+          <div className="relative w-5 h-8 sm:w-6 sm:h-10 border-2 border-primary/50 rounded-full flex items-center justify-center">
             <motion.div
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -223,7 +226,7 @@ const HeroText = memo(() => {
           <motion.svg
             animate={{ y: [0, 4, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            className="w-5 h-5 text-primary"
+            className="w-4 h-4 sm:w-5 sm:h-5 text-primary"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

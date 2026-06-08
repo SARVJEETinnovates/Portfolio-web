@@ -37,28 +37,28 @@ const Navigation = memo(() => {
         aria-label="Main navigation"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled 
-            ? 'py-4 bg-background/90 backdrop-blur-xl border-b border-primary/20 shadow-[0_4px_20px_rgba(204,255,0,0.1)]' 
-            : 'py-6 bg-transparent'
+            ? 'py-3 sm:py-4 bg-background/90 backdrop-blur-xl border-b border-primary/20 shadow-[0_4px_20px_rgba(204,255,0,0.1)]' 
+            : 'py-4 sm:py-6 bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex items-center justify-between">
           {/* Enhanced Logo */}
           <a
             href="#"
             aria-label="Sarvjeet Yadav - Home"
             title="Go to homepage"
-            className="group font-display font-bold text-2xl text-foreground hover:text-primary transition-all duration-300 relative"
+            className="group font-display font-bold text-xl sm:text-2xl text-foreground hover:text-primary transition-all duration-300 relative"
           >
             <span className="relative z-10">SY<span className="text-primary group-hover:animate-pulse">.</span></span>
             <div className="absolute inset-0 bg-primary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </a>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.label}
-                onClick={() => scrollToSection(link.href, link.external)}
-                className="group relative text-muted-foreground hover:text-foreground transition-colors font-medium"
+                onClick={() => scrollToSection(link.href)}
+                className="group relative text-xs sm:text-sm md:text-base text-muted-foreground hover:text-foreground transition-colors font-medium"
               >
                 {link.label}
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
@@ -66,7 +66,7 @@ const Navigation = memo(() => {
             ))}
             <button
               onClick={() => scrollToSection('#contact')}
-              className="px-6 py-2.5 text-sm bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-lg hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] transition-all duration-300 font-semibold transform hover:scale-105"
+              className="px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 text-xs sm:text-sm bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-lg hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] transition-all duration-300 font-semibold transform hover:scale-105"
             >
               Let's Talk
             </button>
@@ -103,7 +103,7 @@ const Navigation = memo(() => {
               key={link.label}
               onClick={() => scrollToSection(link.href, link.external)}
               style={{ animationDelay: `${idx * 0.1}s` }}
-              className="relative text-3xl font-display font-bold text-foreground hover:text-primary transition-all duration-300 animate-fade-in group"
+              className="relative text-2xl sm:text-3xl font-display font-bold text-foreground hover:text-primary transition-all duration-300 animate-fade-in group"
             >
               {link.label}
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />

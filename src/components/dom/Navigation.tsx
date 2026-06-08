@@ -35,21 +35,22 @@ const Navigation = memo(() => {
       <nav
         role="navigation"
         aria-label="Main navigation"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled 
-            ? 'py-4 bg-background/80 backdrop-blur-xl border-b border-border/50' 
+            ? 'py-4 bg-background/90 backdrop-blur-xl border-b border-primary/20 shadow-[0_4px_20px_rgba(204,255,0,0.1)]' 
             : 'py-6 bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo with proper accessibility */}
+          {/* Enhanced Logo */}
           <a
             href="#"
             aria-label="Sarvjeet Yadav - Home"
             title="Go to homepage"
-            className="font-display font-bold text-2xl text-foreground hover:text-primary transition-colors"
+            className="group font-display font-bold text-2xl text-foreground hover:text-primary transition-all duration-300 relative"
           >
-            SY<span className="text-primary">.</span>
+            <span className="relative z-10">SY<span className="text-primary group-hover:animate-pulse">.</span></span>
+            <div className="absolute inset-0 bg-primary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </a>
 
           <div className="hidden md:flex items-center gap-8">
@@ -57,14 +58,15 @@ const Navigation = memo(() => {
               <button
                 key={link.label}
                 onClick={() => scrollToSection(link.href, link.external)}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium link-underline"
+                className="group relative text-muted-foreground hover:text-foreground transition-colors font-medium"
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
               </button>
             ))}
             <button
               onClick={() => scrollToSection('#contact')}
-              className="px-6 py-2 text-sm bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
+              className="px-6 py-2.5 text-sm bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-lg hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] transition-all duration-300 font-semibold transform hover:scale-105"
             >
               Let's Talk
             </button>
@@ -72,18 +74,19 @@ const Navigation = memo(() => {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground hover:bg-primary/10 rounded-lg transition-colors"
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span 
-                className={`w-full h-0.5 bg-current origin-left transition-transform ${isMobileMenuOpen ? 'rotate-45 translate-y-[2px]' : ''}`}
+                className={`w-full h-0.5 bg-current origin-left transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[2px]' : ''}`}
               />
               <span 
-                className={`w-full h-0.5 bg-current transition-opacity ${isMobileMenuOpen ? 'opacity-0' : ''}`}
+                className={`w-full h-0.5 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 scale-0' : ''}`}
               />
               <span 
-                className={`w-full h-0.5 bg-current origin-left transition-transform ${isMobileMenuOpen ? '-rotate-45 -translate-y-[2px]' : ''}`}
+                className={`w-full h-0.5 bg-current origin-left transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[2px]' : ''}`}
               />
             </div>
           </button>
@@ -92,15 +95,18 @@ const Navigation = memo(() => {
 
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 md:hidden bg-background flex flex-col items-center justify-center gap-8 animate-fade-in"
+          className="fixed inset-0 z-40 md:hidden bg-gradient-to-br from-background via-background to-background/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 animate-fade-in"
         >
-          {navLinks.map((link) => (
+          <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-10" />
+          {navLinks.map((link, idx) => (
             <button
               key={link.label}
               onClick={() => scrollToSection(link.href, link.external)}
-              className="text-3xl font-display font-bold text-foreground hover:text-primary transition-colors"
+              style={{ animationDelay: `${idx * 0.1}s` }}
+              className="relative text-3xl font-display font-bold text-foreground hover:text-primary transition-all duration-300 animate-fade-in group"
             >
               {link.label}
+              <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
             </button>
           ))}
         </div>

@@ -97,8 +97,8 @@ const SkillCategory = memo(({ categoryName, categorySkills, index }: {
           <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {categoryName}
           </span>
-          <span className="text-xs font-normal text-muted-foreground px-3 py-1 rounded-full bg-primary/10 border border-primary/30 backdrop-blur-sm">
-            {categorySkills.length} items
+          <span className="text-xs font-mono font-bold text-primary px-3 py-1 rounded-full bg-primary/10 border border-primary/30 backdrop-blur-sm">
+            {categorySkills?.length || 0} Skills
           </span>
         </h3>
 

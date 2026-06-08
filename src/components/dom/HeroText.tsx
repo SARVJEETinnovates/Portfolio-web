@@ -30,16 +30,30 @@ const HeroText = memo(() => {
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight" itemProp="name">
               <motion.span 
-                className="inline-block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent animate-gradient"
-                animate={{ backgroundPosition: ['0%', '100%', '0%'] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="inline-block bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent text-shadow-lg"
+                animate={{ 
+                  backgroundPosition: ['0%', '100%', '0%'],
+                  letterSpacing: ['-0.02em', '-0.01em', '-0.02em'],
+                }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                style={{
+                  backgroundSize: '200% 200%',
+                  filter: 'drop-shadow(0 0 20px rgba(204, 255, 0, 0.3))',
+                }}
               >
                 Sarvjeet
               </motion.span>{' '}
               <motion.span 
-                className="inline-block bg-gradient-to-r from-foreground/90 via-foreground to-foreground/70 bg-clip-text text-transparent animate-gradient"
-                animate={{ backgroundPosition: ['0%', '100%', '0%'] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                className="inline-block bg-gradient-to-r from-foreground/80 via-foreground/90 to-foreground/80 bg-clip-text text-transparent"
+                animate={{ 
+                  backgroundPosition: ['0%', '100%', '0%'],
+                  letterSpacing: ['-0.02em', '-0.01em', '-0.02em'],
+                }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                style={{
+                  backgroundSize: '200% 200%',
+                  filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.1))',
+                }}
               >
                 Yadav
               </motion.span>
@@ -97,7 +111,7 @@ const HeroText = memo(() => {
                   viewBox="0 0 24 24"
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                  whileHover={{ x: 8 }}
+                  whileHover={{ x: 6, y: -6 }}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </motion.svg>
@@ -119,7 +133,7 @@ const HeroText = memo(() => {
                   viewBox="0 0 24 24"
                   animate={{ y: [0, 3, 0] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                  whileHover={{ y: 6 }}
+                  whileHover={{ y: 6, x: 2 }}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </motion.svg>

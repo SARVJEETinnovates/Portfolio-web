@@ -21,25 +21,6 @@ const LoadingScreen = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   return (
     <AnimatePresence>
       {isLoading && (
@@ -47,131 +28,55 @@ const LoadingScreen = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9999] bg-gradient-to-br from-background via-background/95 to-background flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center"
         >
-          {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="relative">
+            {/* Logo - SY with new style and color */}
             <motion.div
-              animate={{ 
-                rotate: 360,
-                scale: [1, 1.2, 1],
-              }}
-              transition={{ 
-                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-              }}
-              className="absolute -top-1/2 -right-1/2 w-full h-full rounded-full border border-primary/20 opacity-40"
-            />
-            <motion.div
-              animate={{ 
-                rotate: -360,
-                scale: [1, 0.8, 1],
-              }}
-              transition={{ 
-                rotate: { duration: 30, repeat: Infinity, ease: "linear" },
-                scale: { duration: 10, repeat: Infinity, ease: "easeInOut" },
-              }}
-              className="absolute -bottom-1/2 -left-1/2 w-full h-full rounded-full border border-primary/10 opacity-30"
-            />
-          </div>
-
-          {/* Main content */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="relative z-10 text-center space-y-8"
-          >
-            {/* Animated logo */}
-            <motion.div
-              variants={itemVariants}
-              className="relative"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-7xl font-display font-bold mb-8"
             >
-              <motion.div
+              <motion.span
                 animate={{ 
-                  y: [0, -10, 0],
-                  rotate: [0, 2, -2, 0],
+                  y: [0, -8, 0],
+                  letterSpacing: ['-0.02em', '0em', '-0.02em'],
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="text-7xl font-display font-bold mb-4"
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="inline-block bg-gradient-to-r from-primary via-primary/90 to-primary bg-clip-text text-transparent"
               >
-                <span className="inline-block bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent animate-gradient">
-                  SY<span className="text-primary">.</span>
-                </span>
-              </motion.div>
-              
-              {/* Glowing orbit around logo */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 w-24 h-24 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/30"
-              />
-            </motion.div>
-
-            {/* Loading text with typing effect */}
-            <motion.div variants={itemVariants} className="space-y-3">
-              <p className="text-lg font-display text-foreground tracking-widest">
-                Initializing Portfolio
-              </p>
-              <p className="text-sm text-muted-foreground font-mono">
-                <motion.span
-                  animate={{ opacity: [0, 1, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  ▌
-                </motion.span>
-              </p>
-            </motion.div>
-
-            {/* Animated progress bar with glow */}
-            <motion.div variants={itemVariants} className="w-80 space-y-3">
-              <div className="relative h-2 bg-border/30 rounded-full overflow-hidden backdrop-blur-sm border border-primary/20">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary rounded-full shadow-[0_0_20px_rgba(204,255,0,0.8)]"
-                />
-              </div>
-              <div className="text-xs text-muted-foreground text-center font-mono">
-                {Math.floor(progress)}%
-              </div>
-            </motion.div>
-
-            {/* Scanning lines animation */}
-            <motion.div variants={itemVariants} className="space-y-2 h-16 overflow-hidden">
-              {[...Array(3)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ 
-                    opacity: [0.3, 1, 0.3],
-                    x: [-100, 100, -100],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.2,
-                  }}
-                  className="h-px bg-gradient-to-r from-transparent via-primary to-transparent w-64"
-                />
-              ))}
-            </motion.div>
-
-            {/* Status text */}
-            <motion.div
-              variants={itemVariants}
-              className="text-xs text-muted-foreground/70 space-y-1 font-mono"
-            >
-              <p>{'> System initialized'}</p>
-              <p>{'> Loading experience modules'}</p>
-              <motion.p
+                SY
+              </motion.span>
+              <motion.span
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
+                className="text-primary ml-1"
               >
-                {'> Ready in a moment...'}
-              </motion.p>
+                .
+              </motion.span>
             </motion.div>
-          </motion.div>
+
+            {/* Progress bar */}
+            <div className="w-64 h-1 bg-border rounded-full overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.3 }}
+                className="h-full bg-gradient-to-r from-primary to-primary/60 rounded-full"
+              />
+            </div>
+
+            {/* Loading text */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-sm text-muted-foreground mt-4 text-center font-mono"
+            >
+              Loading experience...
+            </motion.p>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

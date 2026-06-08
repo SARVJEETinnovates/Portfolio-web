@@ -206,9 +206,12 @@ const HeroText = memo(() => {
 
       {/* Scroll indicator - Enhanced and positioned better */}
       <button
-        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+        onClick={() => {
+          const statsSection = document.querySelector('[aria-label="Statistics"]');
+          statsSection?.scrollIntoView({ behavior: 'smooth' });
+        }}
         className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 pointer-events-auto z-20 group"
-        aria-label="Scroll down to next section"
+        aria-label="Scroll down to stats section"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

@@ -72,28 +72,20 @@ const LoadingScreen = () => {
                   height: `${droplet.height}px`,
                   background: 'linear-gradient(to bottom, rgba(204, 255, 0, 0.6) 0%, rgba(204, 255, 0, 0.1) 100%)',
                   boxShadow: '0 0 8px rgba(204, 255, 0, 0.3)',
-                  animation: `rainFall ${droplet.duration}s linear ${droplet.delay}s infinite`,
+                }}
+                initial={{ y: -100, opacity: 0 }}
+                animate={{
+                  y: typeof window !== 'undefined' ? window.innerHeight + 100 : 800,
+                  opacity: [0, 0.2, 0.2, 0],
+                }}
+                transition={{
+                  duration: droplet.duration,
+                  delay: droplet.delay,
+                  repeat: Infinity,
+                  ease: 'linear',
                 }}
               />
             ))}
-            <style>{`
-              @keyframes rainFall {
-                from {
-                  transform: translateY(-100px);
-                  opacity: 0;
-                }
-                10% {
-                  opacity: 0.2;
-                }
-                90% {
-                  opacity: 0.2;
-                }
-                to {
-                  transform: translateY(calc(100vh + 100px));
-                  opacity: 0;
-                }
-              }
-            `}</style>
           </div>
 
           {/* Main content */}

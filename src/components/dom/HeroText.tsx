@@ -205,16 +205,20 @@ const HeroText = memo(() => {
       </div>
 
       {/* Scroll indicator - Enhanced and positioned better */}
-      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true">
+      <button
+        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+        className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 pointer-events-auto z-20 group"
+        aria-label="Scroll down to next section"
+      >
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Scroll down</span>
+          <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors">Scroll down</span>
           
-          {/* Animated scroll icon */}
-          <div className="relative w-5 h-8 sm:w-6 sm:h-10 border-2 border-primary/50 rounded-full flex items-center justify-center">
+          {/* Animated scroll icon - Enhanced clickable area */}
+          <div className="relative w-6 h-10 sm:w-8 sm:h-12 border-2 border-primary/50 rounded-full flex items-center justify-center group-hover:border-primary transition-colors">
             <motion.div
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -226,7 +230,7 @@ const HeroText = memo(() => {
           <motion.svg
             animate={{ y: [0, 4, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            className="w-4 h-4 sm:w-5 sm:h-5 text-primary"
+            className="w-4 h-4 sm:w-6 sm:h-6 text-primary group-hover:text-primary/80 transition-colors"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -234,7 +238,7 @@ const HeroText = memo(() => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </motion.svg>
         </motion.div>
-      </div>
+      </button>
         
       {/* Hidden SEO content for crawlers */}
       <meta itemProp="url" content="https://sarvjeetyadav.dev" />

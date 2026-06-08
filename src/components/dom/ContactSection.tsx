@@ -88,53 +88,60 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="section-container relative">
+    <section id="contact" className="section-container relative overflow-hidden py-20">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent opacity-30" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-5" />
+      
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <span className="text-primary font-mono text-sm uppercase tracking-widest mb-4 block">
+          <span className="inline-block text-primary font-mono text-sm uppercase tracking-[0.3em] mb-4 backdrop-blur-sm bg-primary/10 px-4 py-2 rounded-full border border-primary/30">
             Get In Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-            Contact Me
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 bg-gradient-to-r from-foreground via-foreground to-primary/70 bg-clip-text text-transparent">
+            Let's Work Together
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Have a project in mind? Let's discuss how we can bring your ideas to life.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="max-w-2xl mx-auto">
           {/* Form Container */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-card rounded-lg p-8 shadow-2xl border border-border/50"
+            className="backdrop-blur-md bg-card/50 rounded-2xl p-8 md:p-10 shadow-2xl border border-border/50 hover:border-primary/30 transition-all duration-300"
           >
             {/* Error Message */}
-            <div className="h-8 mb-4">
+            <div className="min-h-[2rem] mb-4">
               {!emailValid && formData.email && (
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-destructive text-sm text-center bg-destructive/10 py-2 px-4 rounded"
+                  className="text-destructive text-sm text-center bg-destructive/10 py-2 px-4 rounded-lg border border-destructive/30"
                 >
-                  Oh, please enter a valid email address.
+                  Please enter a valid email address.
                 </motion.p>
               )}
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <fieldset className="border-b border-border pb-6 mb-6">
-                <legend className="text-xl font-display font-bold text-foreground mb-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <fieldset className="space-y-6">
+                <legend className="text-2xl font-display font-bold text-foreground mb-8 text-center">
                   Send me a message
                 </legend>
 
                 {/* Name Field */}
-                <div className="mb-5">
+                <div>
                   <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
                     Name
                   </label>
@@ -143,14 +150,14 @@ const ContactSection = () => {
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 text-base bg-background border border-border rounded text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+                    className="w-full px-4 py-3 text-base bg-background/50 backdrop-blur-sm border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                     placeholder="Your name"
                     required
                   />
                 </div>
 
                 {/* Email Field */}
-                <div className="mb-5">
+                <div>
                   <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
                     Email
                   </label>
@@ -159,10 +166,10 @@ const ContactSection = () => {
                     id="email"
                     value={formData.email}
                     onChange={handleEmailChange}
-                    className={`w-full px-4 py-3 text-base bg-background border rounded text-foreground placeholder:text-muted-foreground focus:outline-none transition-all ${
+                    className={`w-full px-4 py-3 text-base bg-background/50 backdrop-blur-sm border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none transition-all ${
                       !emailValid && formData.email
-                        ? 'border-destructive focus:border-destructive focus:ring-1 focus:ring-destructive'
-                        : 'border-border focus:border-primary focus:ring-1 focus:ring-primary'
+                        ? 'border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20'
+                        : 'border-border focus:border-primary focus:ring-2 focus:ring-primary/20'
                     }`}
                     placeholder="your@email.com"
                     required
@@ -170,7 +177,7 @@ const ContactSection = () => {
                 </div>
 
                 {/* Message Field */}
-                <div className="mb-5 relative">
+                <div className="relative">
                   <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
                     Message
                   </label>
@@ -180,48 +187,45 @@ const ContactSection = () => {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={5}
                     maxLength={500}
-                    className="w-full px-4 py-3 text-base bg-background border border-border rounded text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                    className="w-full px-4 py-3 text-base bg-background/50 backdrop-blur-sm border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     placeholder="Tell me about your project..."
                     required
                   />
-                  <span className="absolute bottom-3 right-3 text-xs text-muted-foreground">
+                  <span className="absolute bottom-3 right-3 text-xs text-muted-foreground backdrop-blur-sm bg-background/50 px-2 py-1 rounded">
                     {formData.message.length} / 500
                   </span>
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex justify-end">
+                <div className="flex justify-center pt-4">
                   <button
                     type="submit"
                     disabled={isSubmitting || !emailValid}
-                    className="px-8 py-3 text-base bg-primary text-primary-foreground rounded font-bold hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[0.98] active:scale-95"
+                    className="group relative px-10 py-4 text-base bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-xl font-bold hover:shadow-[0_0_30px_rgba(204,255,0,0.5)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 active:scale-95 overflow-hidden"
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    <span className="relative z-10 flex items-center gap-2">
+                      {isSubmitting ? (
+                        <>
+                          <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </>
+                      )}
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                   </button>
                 </div>
               </fieldset>
             </form>
-          </motion.div>
-
-          {/* Debug Container */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-black/80 rounded-lg p-8 shadow-2xl border border-primary/20"
-          >
-            <h3 className="text-lg font-display font-bold text-primary mb-4">Form Data Preview</h3>
-            <pre className="text-primary/80 text-sm font-mono leading-relaxed overflow-auto">
-              <code>{JSON.stringify({
-                name: formData.name,
-                email: formData.email,
-                emailValid: emailValid,
-                message: formData.message,
-                messageLength: formData.message.length,
-                isSubmitting: isSubmitting
-              }, null, 2)}</code>
-            </pre>
           </motion.div>
         </div>
 
@@ -241,12 +245,13 @@ const ContactSection = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -4 }}
+                whileHover={{ scale: 1.15, y: -4 }}
                 whileTap={{ scale: 0.95 }}
-                className={`w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-muted-foreground hover:border-primary transition-all ${link.color}`}
+                className={`group relative w-14 h-14 rounded-xl backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/50 flex items-center justify-center text-muted-foreground transition-all duration-300 ${link.color}`}
                 aria-label={link.label}
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-6 h-6 relative z-10" />
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
               </motion.a>
             );
           })}

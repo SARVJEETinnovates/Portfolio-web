@@ -86,30 +86,39 @@ const SkillCategory = memo(({ categoryName, categorySkills, index }: {
   return (
     <div 
       ref={categoryRef} 
-      className="relative pl-8 md:pl-12 scroll-animate slide-up"
+      className="group relative pl-8 md:pl-12 scroll-animate slide-up"
       style={{ animationDelay: `${index * 0.15}s` }}
     >
-      <div className="absolute top-6 left-0 w-8 md:w-12 h-px bg-white/10 border-t-2 border-dashed border-white/10" />
-      <div className="absolute -left-[9px] top-4 w-5 h-5 rounded-full border-4 border-background bg-primary" />
+      <div className="absolute top-6 left-0 w-8 md:w-12 h-px bg-primary/20 border-t-2 border-dashed border-primary/20 group-hover:bg-primary/40 transition-all duration-300" />
+      <div className="absolute -left-[9px] top-4 w-5 h-5 rounded-full border-4 border-background bg-primary shadow-[0_0_15px_rgba(204,255,0,0.5)] group-hover:shadow-[0_0_25px_rgba(204,255,0,0.8)] transition-all duration-300" />
 
-      <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
-        {categoryName}
-        <span className="text-xs font-normal text-muted-foreground px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
-          {categorySkills.length} items
-        </span>
-      </h3>
+      <div className="backdrop-blur-sm bg-background/20 p-6 rounded-xl border border-border/30 group-hover:border-primary/30 transition-all duration-300 group-hover:bg-background/30">
+        <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
+          <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            {categoryName}
+          </span>
+          <span className="text-xs font-normal text-muted-foreground px-3 py-1 rounded-full bg-primary/10 border border-primary/30 backdrop-blur-sm">
+            {categorySkills.length} items
+          </span>
+        </h3>
 
-      <div className="flex flex-wrap gap-3 justify-start">
-        {categorySkills.map((skill) => (
-          <img
-            key={skill.id}
-            src={skillIcons[skill.id]}
-            alt={skill.name}
-            className="h-8"
-            loading="lazy"
-            decoding="async"
-          />
-        ))}
+        <div className="flex flex-wrap gap-3 justify-start">
+          {categorySkills.map((skill, idx) => (
+            <div 
+              key={skill.id} 
+              className="transform hover:scale-110 transition-transform duration-300"
+              style={{ animationDelay: `${idx * 0.05}s` }}
+            >
+              <img
+                src={skillIcons[skill.id]}
+                alt={skill.name}
+                className="h-8 hover:drop-shadow-[0_0_10px_rgba(204,255,0,0.5)]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -138,20 +147,26 @@ const SkillsSection = memo(() => {
   }, []);
   
   return (
-    <section id="skills" className="py-20" aria-label="Technical Skills">
-      <div className="section-container max-w-5xl mx-auto">
-        <header ref={headerRef} className="mb-12 scroll-animate slide-up">
-          <h2 className="text-3xl font-mono font-bold text-foreground">
-            <span className="text-primary mr-2" aria-hidden="true">~/</span>
-            <span>Technical Skills & Expertise</span>
+    <section id="skills" className="relative py-20 overflow-hidden" aria-label="Technical Skills">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent opacity-30" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-5" />
+      
+      <div className="section-container max-w-5xl mx-auto relative">
+        <header ref={headerRef} className="mb-16 text-center scroll-animate slide-up">
+          <span className="inline-block text-primary font-mono text-sm uppercase tracking-[0.3em] mb-4 backdrop-blur-sm bg-primary/10 px-4 py-2 rounded-full border border-primary/30">
+            Tech Arsenal
+          </span>
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 bg-gradient-to-r from-foreground via-foreground to-primary/70 bg-clip-text text-transparent">
+            Technical Skills & Expertise
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto backdrop-blur-sm bg-background/30 p-4 rounded-xl border border-border/30">
             Comprehensive tech stack spanning frontend, backend, databases, and DevOps. 
             Proficient in modern JavaScript ecosystem with hands-on experience in AI/ML integration.
           </p>
         </header>
 
-        <div className="relative border-l-2 border-dashed border-white/10 ml-4 md:ml-10 space-y-12" role="list">
+        <div className="relative border-l-2 border-dashed border-primary/20 ml-4 md:ml-10 space-y-12" role="list">
           {Object.entries(categories).map(([categoryName, categoryIds], index) => {
             const categorySkills = skills.filter(skill => categoryIds.includes(skill.id));
             

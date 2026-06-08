@@ -93,11 +93,11 @@ const SkillCategory = memo(({ categoryName, categorySkills, index }: {
       <div className="absolute -left-[9px] top-4 w-5 h-5 rounded-full border-4 border-background bg-primary shadow-[0_0_15px_rgba(204,255,0,0.5)] group-hover:shadow-[0_0_25px_rgba(204,255,0,0.8)] transition-all duration-300" />
 
       <div className="backdrop-blur-sm bg-background/20 p-6 rounded-xl border border-border/30 group-hover:border-primary/30 transition-all duration-300 group-hover:bg-background/30">
-        <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
+        <h3 className="text-xl font-bold text-foreground mb-6 flex items-center justify-between gap-3">
           <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {categoryName}
           </span>
-          <span className="text-xs font-mono font-bold text-primary px-3 py-1 rounded-full bg-primary/10 border border-primary/30 backdrop-blur-sm">
+          <span className="text-sm font-bold text-background bg-primary px-3 py-1.5 rounded-lg border-2 border-primary/80 backdrop-blur-sm min-w-fit">
             {categorySkills?.length || 0} Skills
           </span>
         </h3>

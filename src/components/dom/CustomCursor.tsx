@@ -54,7 +54,7 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Main cursor dot - CHANGES COLOR ON HOVER */}
+      {/* Main cursor dot - CHANGES INSIDE COLOR ON HOVER */}
       <div
         className="fixed pointer-events-none z-[10000]"
         style={{
@@ -64,15 +64,15 @@ const CustomCursor = () => {
         }}
       >
         <div
-          className={`rounded-full transition-all duration-150 ${
+          className={`rounded-full transition-all duration-200 ${
             isPointer 
-              ? 'w-3 h-3 bg-background border-2 border-primary shadow-[0_0_8px_rgba(204,255,0,0.6)]' 
+              ? 'w-3 h-3 bg-background border-2 border-primary shadow-[0_0_8px_rgba(204,255,0,0.8)]' 
               : 'w-2 h-2 bg-primary shadow-[0_0_4px_rgba(204,255,0,0.4)]'
           }`}
         />
       </div>
 
-      {/* Outer ring - stays same, just zooms */}
+      {/* Outer ring - zooms on hover */}
       <div
         className="fixed pointer-events-none z-[10000]"
         style={{
@@ -82,9 +82,14 @@ const CustomCursor = () => {
         }}
       >
         <div
-          className={`rounded-full border-2 border-primary/50 transition-all duration-300 ease-out ${
-            isPointer ? 'w-12 h-12 scale-110' : 'w-8 h-8'
+          className={`rounded-full border-2 transition-all duration-300 ease-out ${
+            isPointer 
+              ? 'w-14 h-14 border-primary scale-125' 
+              : 'w-8 h-8 border-primary/40'
           }`}
+          style={{
+            backgroundColor: isPointer ? 'rgba(204, 255, 0, 0.08)' : 'transparent',
+          }}
         />
       </div>
     </>

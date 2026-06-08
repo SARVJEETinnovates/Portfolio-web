@@ -133,7 +133,7 @@ const HeroText = memo(() => {
                   viewBox="0 0 24 24"
                   animate={{ y: [0, 3, 0] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                  whileHover={{ y: 8 }}
+                  whileHover={{ y: 6, x: 2 }}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </motion.svg>

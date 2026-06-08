@@ -1,35 +1,21 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface FallingCharacter {
-  id: number;
-  char: string;
-  xPosition: number;
-  delay: number;
-  duration: number;
-}
+// Generate rain droplets with random properties
+const generateRainDroplets = (count: number) => {
+  return Array.from({ length: count }).map((_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    delay: Math.random() * 3,
+    duration: 3 + Math.random() * 5,
+    height: 40 + Math.random() * 60,
+  }));
+};
 
 const LoadingScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-
-  // Generate falling characters once
-  const fallingCharacters = useMemo(() => {
-    const codeCharacters = ['<', '>', '{', '}', '[', ']', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '=', '+', '-', '*'];
-    const characters: FallingCharacter[] = [];
-    
-    for (let i = 0; i < 20; i++) {
-      characters.push({
-        id: i,
-        char: codeCharacters[Math.floor(Math.random() * codeCharacters.length)],
-        xPosition: Math.random() * 100,
-        delay: Math.random() * 2,
-        duration: 4 + Math.random() * 4,
-      });
-    }
-    
-    return characters;
-  }, []);
+  const [rainDroplets] = useState(() => generateRainDroplets(35));
 
   useEffect(() => {
     // Simulate loading progress
@@ -75,67 +61,39 @@ const LoadingScreen = () => {
           transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[9999] bg-gradient-to-br from-background via-background/95 to-background flex flex-col items-center justify-center overflow-hidden"
         >
-          {/* Falling code characters background */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {fallingCharacters.map((charData) => (
-              <motion.div
-                key={charData.id}
-                initial={{
-                  y: -50,
-                  x: `${charData.xPosition}%`,
-                  opacity: 0,
-                  rotate: 0,
-                }}
-                animate={{
-                  y: typeof window !== 'undefined' ? window.innerHeight + 50 : 1000,
-                  opacity: [0, 0.6, 0.3, 0],
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: charData.duration,
-                  delay: charData.delay,
-                  repeat: Infinity,
-                  ease: 'linear',
-                  opacity: {
-                    times: [0, 0.2, 0.8, 1],
-                    duration: charData.duration,
-                  },
-                  rotate: {
-                    duration: charData.duration * 0.6,
-                    repeat: Infinity,
-                  },
-                }}
-                className="absolute text-4xl font-mono font-bold text-primary/30"
-              >
-                {charData.char}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Animated background elements */}
+          {/* Rain effect background */}
           <div className="absolute inset-0 overflow-hidden">
-            <motion.div
-              animate={{ 
-                rotate: 360,
-                scale: [1, 1.2, 1],
-              }}
-              transition={{ 
-                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-              }}
-              className="absolute -top-1/2 -right-1/2 w-full h-full rounded-full border border-primary/20 opacity-40"
-            />
-            <motion.div
-              animate={{ 
-                rotate: -360,
-                scale: [1, 0.8, 1],
-              }}
-              transition={{ 
-                rotate: { duration: 30, repeat: Infinity, ease: "linear" },
-                scale: { duration: 10, repeat: Infinity, ease: "easeInOut" },
-              }}
-              className="absolute -bottom-1/2 -left-1/2 w-full h-full rounded-full border border-primary/10 opacity-30"
-            />
+            {rainDroplets.map((droplet) => (
+              <motion.div
+                key={droplet.id}
+                className="absolute w-px rounded-full pointer-events-none"
+                style={{
+                  left: `${droplet.left}%`,
+                  height: `${droplet.height}px`,
+                  background: 'linear-gradient(to bottom, rgba(204, 255, 0, 0.6) 0%, rgba(204, 255, 0, 0.1) 100%)',
+                  boxShadow: '0 0 8px rgba(204, 255, 0, 0.3)',
+                  animation: `rainFall ${droplet.duration}s linear ${droplet.delay}s infinite`,
+                }}
+              />
+            ))}
+            <style>{`
+              @keyframes rainFall {
+                from {
+                  transform: translateY(-100px);
+                  opacity: 0;
+                }
+                10% {
+                  opacity: 0.2;
+                }
+                90% {
+                  opacity: 0.2;
+                }
+                to {
+                  transform: translateY(calc(100vh + 100px));
+                  opacity: 0;
+                }
+              }
+            `}</style>
           </div>
 
           {/* Main content */}

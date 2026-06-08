@@ -10,7 +10,7 @@ const HeroText = memo(() => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8">
+    <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 pt-20 sm:pt-24 md:pt-20 lg:pt-0">
       <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-10 lg:gap-12">
         
         {/* Left side - Text content */}

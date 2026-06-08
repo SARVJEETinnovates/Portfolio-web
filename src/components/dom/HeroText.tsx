@@ -1,7 +1,14 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const HeroText = memo(() => {
+  const [loadingComplete, setLoadingComplete] = useState(false);
+
+  useEffect(() => {
+    // Wait for loading screen to complete (1 second delay)
+    const timer = setTimeout(() => setLoadingComplete(true), 1000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4 md:px-8">
       <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12">
@@ -12,8 +19,8 @@ const HeroText = memo(() => {
           {/* Greeting line */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: loadingComplete ? 0.2 : 0 }}
             className="mb-4"
           >
             <p className="text-xl md:text-2xl text-muted-foreground font-light">
@@ -24,8 +31,8 @@ const HeroText = memo(() => {
           {/* Name with split color styling */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: loadingComplete ? 0.4 : 0 }}
             className="mb-6"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight" itemProp="name">
@@ -63,8 +70,8 @@ const HeroText = memo(() => {
           {/* Role badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: loadingComplete ? 0.6 : 0 }}
             className="mb-8"
           >
             <div className="inline-flex items-center gap-3 backdrop-blur-sm bg-muted/20 px-5 py-3 rounded-full border border-primary/30">
@@ -81,8 +88,8 @@ const HeroText = memo(() => {
           {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: loadingComplete ? 0.8 : 0 }}
             className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mb-10"
             itemProp="description"
           >
@@ -92,8 +99,8 @@ const HeroText = memo(() => {
           {/* CTA buttons */}
           <motion.nav
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
+            animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: loadingComplete ? 1 : 0 }}
             className="flex flex-wrap gap-4 pointer-events-auto"
             aria-label="Quick navigation"
           >
@@ -144,92 +151,56 @@ const HeroText = memo(() => {
           {/* Experience badge */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
+            animate={loadingComplete ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.6, delay: loadingComplete ? 1.2 : 0 }}
             className="mt-12 flex items-center gap-8 text-sm text-muted-foreground"
           >
             <div>
-              <div className="text-3xl font-bold text-primary">2+</div>
+              <div className="text-3xl font-bold text-primary">3+</div>
               <div className="text-xs uppercase tracking-wider">Years Experience</div>
             </div>
             <div className="h-12 w-px bg-border"></div>
             <div>
-              <div className="text-3xl font-bold text-primary">5+</div>
-              <div className="text-xs uppercase tracking-wider">Projects Delivered</div>
+              <div className="text-3xl font-bold text-primary">10+</div>
+              <div className="text-xs uppercase tracking-wider">Projects Completed</div>
             </div>
           </motion.div>
         </article>
 
-        {/* Right side - Profile Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotateY: -20 }}
-          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="hidden lg:flex flex-1 items-center justify-center pointer-events-none"
-          style={{ perspective: '1000px' }}
-        >
-          <div className="relative w-64 h-80">
-            {/* Glowing background circle */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/10 rounded-3xl blur-3xl animate-pulse" />
+        {/* Right side - Profile Image Section */}
+        <div className="hidden lg:flex flex-1 items-center justify-center pointer-events-none relative h-full">
+          {/* Full image display - scaled to fit layout */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={loadingComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: loadingComplete ? 1 : 0 }}
+            whileHover={{ scale: 1.05 }}
+            className="relative w-full max-w-sm drop-shadow-2xl"
+          >
+            {/* Subtle glow background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-teal-900/5 to-transparent rounded-3xl blur-2xl -z-10" />
             
-            {/* Floating element background */}
-            <motion.div
-              animate={{ 
-                y: [0, -20, 0],
-                rotate: [0, 2, 0]
+            {/* Image container - circular with clipping */}
+            <div 
+              className="relative rounded-full overflow-hidden border-2 border-cyan-400/40"
+              style={{
+                width: '384px',    // Change this to adjust ring width (e.g., '320px', '400px', '450px')
+                height: '460px',   // Change this to adjust ring height (e.g., '320px', '400px', '450px')
+                boxShadow: '0 0 40px rgba(34, 211, 238, 0.4), inset 0 1px 20px rgba(255, 255, 255, 0.1)',
               }}
-              transition={{ 
-                duration: 6, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-3xl border border-primary/30 backdrop-blur-sm"
-            />
-            
-            {/* Profile image placeholder with gradient */}
-            <div className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-primary/50 shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-background/80" />
+            >
+              {/* Subtle gradient overlay for depth and polish */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/10 rounded-full z-10 pointer-events-none" />
               
-              {/* SVG Avatar as placeholder */}
-              <svg 
-                viewBox="0 0 200 240" 
-                className="w-full h-full"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Background */}
-                <defs>
-                  <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{stopColor: 'rgba(204, 255, 0, 0.1)', stopOpacity: 1}} />
-                    <stop offset="100%" style={{stopColor: 'rgba(204, 255, 0, 0.05)', stopOpacity: 1}} />
-                  </linearGradient>
-                </defs>
-                <rect width="200" height="240" fill="url(#bgGradient)" />
-                
-                {/* Head */}
-                <circle cx="100" cy="70" r="35" fill="rgba(204, 255, 0, 0.3)" stroke="rgba(204, 255, 0, 0.5)" strokeWidth="2" />
-                
-                {/* Body/Torso */}
-                <path d="M 70 105 Q 70 110 75 115 L 75 200 Q 75 210 85 210 L 115 210 Q 125 210 125 200 L 125 115 Q 130 110 130 105" fill="rgba(204, 255, 0, 0.2)" stroke="rgba(204, 255, 0, 0.5)" strokeWidth="2" />
-                
-                {/* Arms */}
-                <line x1="75" y1="120" x2="50" y2="150" stroke="rgba(204, 255, 0, 0.4)" strokeWidth="8" strokeLinecap="round" />
-                <line x1="125" y1="120" x2="150" y2="150" stroke="rgba(204, 255, 0, 0.4)" strokeWidth="8" strokeLinecap="round" />
-                
-                {/* Face details */}
-                <circle cx="90" cy="65" r="3" fill="rgba(204, 255, 0, 0.8)" />
-                <circle cx="110" cy="65" r="3" fill="rgba(204, 255, 0, 0.8)" />
-                <path d="M 95 75 Q 100 78 105 75" stroke="rgba(204, 255, 0, 0.6)" strokeWidth="2" fill="none" strokeLinecap="round" />
-              </svg>
+              <img
+                src="/hero.png"
+                alt="Sarvjeet Yadav - Full Stack Developer and AI Engineer"
+                className="w-full h-full object-cover object-center"
+                loading="eager"
+              />
             </div>
-
-            {/* Decorative elements */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-8 border border-primary/20 rounded-3xl"
-            />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator - Enhanced and positioned better */}

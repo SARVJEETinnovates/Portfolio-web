@@ -60,7 +60,7 @@ const LoadingScreen = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[9999] bg-gradient-to-br from-background via-background/95 to-background flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-gradient-to-br from-background via-background to-background flex flex-col items-center justify-center overflow-hidden"
         >
           {/* Rain effect background */}
           <div className="absolute inset-0 overflow-hidden">

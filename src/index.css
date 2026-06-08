@@ -201,10 +201,17 @@
   html {
     scroll-behavior: smooth;
     cursor: none;
+    background: linear-gradient(135deg, 
+      hsl(0 0% 2%) 0%,
+      hsl(0 0% 4%) 25%,
+      hsl(73 20% 6%) 50%,
+      hsl(0 0% 4%) 75%,
+      hsl(0 0% 2%) 100%);
+    background-attachment: fixed;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-transparent text-foreground antialiased;
     font-family: var(--font-body);
     overflow-x: hidden;
     cursor: none;

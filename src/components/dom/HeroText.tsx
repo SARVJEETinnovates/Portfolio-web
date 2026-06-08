@@ -29,8 +29,20 @@ const HeroText = memo(() => {
             className="mb-6"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight" itemProp="name">
-              <span className="text-primary">Sarvjeet</span>{' '}
-              <span className="text-foreground">Yadav</span>
+              <motion.span 
+                className="inline-block bg-gradient-to-r from-primary via-primary to-primary/80 bg-clip-text text-transparent animate-gradient"
+                animate={{ backgroundPosition: ['0%', '100%', '0%'] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              >
+                Sarvjeet
+              </motion.span>{' '}
+              <motion.span 
+                className="inline-block bg-gradient-to-r from-foreground/90 via-foreground to-foreground/70 bg-clip-text text-transparent animate-gradient"
+                animate={{ backgroundPosition: ['0%', '100%', '0%'] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+              >
+                Yadav
+              </motion.span>
             </h1>
           </motion.div>
 
@@ -85,6 +97,7 @@ const HeroText = memo(() => {
                   viewBox="0 0 24 24"
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                  whileHover={{ x: 8 }}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </motion.svg>
@@ -106,6 +119,7 @@ const HeroText = memo(() => {
                   viewBox="0 0 24 24"
                   animate={{ y: [0, 3, 0] }}
                   transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                  whileHover={{ y: 6 }}
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </motion.svg>

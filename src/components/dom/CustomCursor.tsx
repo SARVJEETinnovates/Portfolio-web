@@ -64,8 +64,10 @@ const CustomCursor = () => {
         }}
       >
         <div
-          className={`rounded-full bg-primary shadow-[0_0_8px_rgba(204,255,0,0.8)] transition-all duration-150 ${
-            isPointer ? 'w-3 h-3 shadow-[0_0_12px_rgba(204,255,0,1)]' : 'w-2 h-2'
+          className={`rounded-full shadow-[0_0_8px_rgba(204,255,0,0.8)] transition-all duration-150 ${
+            isPointer 
+              ? 'w-3 h-3 bg-background shadow-[0_0_12px_rgba(204,255,0,1)] border-2 border-primary' 
+              : 'w-2 h-2 bg-primary'
           }`}
         />
       </div>
@@ -82,16 +84,16 @@ const CustomCursor = () => {
         <div
           className={`rounded-full backdrop-blur-sm transition-all duration-300 ease-out border-2 ${
             isPointer 
-              ? 'w-16 h-16 border-primary/80 bg-primary/10 shadow-[0_0_20px_rgba(204,255,0,0.6),inset_0_0_20px_rgba(204,255,0,0.2)] scale-110' 
+              ? 'w-16 h-16 border-primary/80 bg-gradient-to-br from-primary/20 to-primary/5 shadow-[0_0_30px_rgba(204,255,0,0.8),inset_0_0_30px_rgba(204,255,0,0.3)] scale-110' 
               : 'w-10 h-10 border-primary/60 bg-primary/5 shadow-[0_0_15px_rgba(204,255,0,0.4)]'
           }`}
           style={{
-            mixBlendMode: isPointer ? 'screen' : 'normal',
+            mixBlendMode: isPointer ? 'lighten' : 'normal',
           }}
         />
       </div>
 
-      {/* Inner accent ring for pointer state */}
+      {/* Inner accent ring with inverted colors for pointer state */}
       {isPointer && (
         <div
           className="fixed pointer-events-none z-[9999]"
@@ -102,11 +104,13 @@ const CustomCursor = () => {
           }}
         >
           <div
-            className="rounded-full border border-primary/40 animate-pulse"
+            className="rounded-full border-2 animate-pulse"
             style={{
-              width: '24px',
-              height: '24px',
-              boxShadow: '0 0 10px rgba(204, 255, 0, 0.3) inset',
+              width: '28px',
+              height: '28px',
+              borderColor: 'rgba(2, 2, 2, 0.6)',
+              backgroundColor: 'rgba(204, 255, 0, 0.15)',
+              boxShadow: '0 0 15px rgba(204, 255, 0, 0.5) inset, 0 0 10px rgba(204, 255, 0, 0.4)',
             }}
           />
         </div>

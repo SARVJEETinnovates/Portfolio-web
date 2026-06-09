@@ -1,6 +1,6 @@
 import { memo, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 interface ContactInfo {
   icon: React.ReactNode;
@@ -45,12 +45,6 @@ const socialLinks = [
     href: 'https://www.linkedin.com/in/sarvjeetyadav2969/',
     icon: FaLinkedin,
     color: 'from-blue-600 to-blue-800',
-  },
-  {
-    label: 'Twitter',
-    href: 'https://twitter.com/sarvjeetyadav',
-    icon: FaTwitter,
-    color: 'from-blue-400 to-blue-600',
   },
 ];
 

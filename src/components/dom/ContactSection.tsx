@@ -228,34 +228,6 @@ const ContactSection = () => {
             </form>
           </motion.div>
         </div>
-
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 flex justify-center gap-6"
-        >
-          {socialLinks.map((link) => {
-            const Icon = link.icon;
-            return (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.15, y: -4 }}
-                whileTap={{ scale: 0.95 }}
-                className={`group relative w-14 h-14 rounded-xl backdrop-blur-sm bg-card/50 border border-border/50 hover:border-primary/50 flex items-center justify-center text-muted-foreground transition-all duration-300 ${link.color}`}
-                aria-label={link.label}
-              >
-                <Icon className="w-6 h-6 relative z-10" />
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
-              </motion.a>
-            );
-          })}
-        </motion.div>
       </div>
     </section>
   );

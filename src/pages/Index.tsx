@@ -3,7 +3,9 @@ import Navigation from '@/components/dom/Navigation';
 import HeroText from '@/components/dom/HeroText';
 import BentoGrid from '@/components/dom/BentoGrid';
 import SkillsSection from '@/components/dom/SkillsSection';
+import ServicesSection from '@/components/dom/ServicesSection';
 import StatsSection from '@/components/dom/StatsSection';
+import ContactInfoSection from '@/components/dom/ContactInfoSection';
 import ContactSection from '@/components/dom/ContactSection';
 import Footer from '@/components/dom/Footer';
 import BackToTop from '@/components/dom/BackToTop';
@@ -77,8 +79,20 @@ const Index = () => {
         {/* Section Divider */}
         <SectionDivider variant="wave" />
 
+        {/* Services Section */}
+        <ServicesSection />
+        
+        {/* Section Divider */}
+        <SectionDivider variant="wave" />
+
         {/* Contact Section */}
         <ContactSection />
+        
+        {/* Section Divider */}
+        <SectionDivider />
+
+        {/* Contact Info Section */}
+        <ContactInfoSection />
       </main>
 
       {/* Semantic footer */}

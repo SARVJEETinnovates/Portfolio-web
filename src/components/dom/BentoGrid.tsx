@@ -132,7 +132,7 @@ const ProjectCard = memo(({ project, index }: { project: typeof projects[0]; ind
       <figure className="timeline__image group relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
         <img 
-          src={`/${project.image === 'nexorithm' ? 'Nexorithm.png' : project.image === 'drk-mttr' ? 'DRLMTTR.jpg' : project.image === 'job-portal' ? 'JOB_portal.jpg' : project.image === 'emware-ai' ? 'Emware.ai.jpg' : project.image === 'eats' ? 'Eats.png' : "Paul's.png"}`}
+          src={`/${project.image === 'nexorithm' ? 'Nexorithm.png' : project.image === 'drk-mttr' ? 'DRLMTTR.jpg' : project.image === 'job-portal' ? 'JOB_portal.jpg' : project.image === 'emware-ai' ? 'Emware.ai.jpg' : project.image === 'eats' ? 'Eats.png' : project.image === 'pauls' ? "Paul's.png" : 'Loan approval.png'}`}
           alt={`${project.title} - ${project.description}. Built with ${project.technologies.slice(0, 3).join(', ')}`}
           title={project.title}
           loading="lazy"
@@ -140,7 +140,7 @@ const ProjectCard = memo(({ project, index }: { project: typeof projects[0]; ind
           width="400"
           height="300"
           className={`w-full h-full ${
-            project.image === 'eats' || project.image === 'pauls' ? 'object-contain' : 'object-cover'
+            project.image === 'eats' || project.image === 'pauls' || project.image === 'loan-approval' ? 'object-contain' : 'object-cover'
           } group-hover:scale-110 transition-transform duration-700`}
         />
       </figure>

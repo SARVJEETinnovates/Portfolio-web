@@ -170,6 +170,20 @@ export const skills: Skill[] = [
 
 export const projects: Project[] = [
   {
+    id: 'loan-approval',
+    title: 'Loan Approval',
+    description: 'AI-powered credit risk assessment platform with RBI regulatory intelligence',
+    longDescription: 'CreditSense - An intelligent loan approval system leveraging AI for credit risk assessment. Features RBI regulatory compliance, multilingual reports, financial guidance chat, and real-time loan eligibility evaluation.',
+    technologies: ['Python', 'Generative AI', 'React', 'Node.js', 'MongoDB', 'LLM Models'],
+    metrics: [
+      { label: 'Type', value: 'FinTech AI' },
+      { label: 'AI Engine', value: 'Generative AI' },
+      { label: 'Features', value: 'RBI Intelligence' },
+    ],
+    image: 'loan-approval',
+    github: 'https://github.com/mitul-bhatia/GEN_AI_LOAN_APPROVAL',
+  },
+  {
     id: 'drk-mttr',
     title: 'DRK/MTTR',
     description: 'Influencer marketing platform connecting brands with YouTube creators',

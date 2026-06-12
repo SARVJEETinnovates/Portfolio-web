@@ -181,6 +181,7 @@ export const projects: Project[] = [
       { label: 'Features', value: 'RBI Intelligence' },
     ],
     image: 'loan-approval',
+    link: 'https://genailoanapproval-fdwemcnw96p8fgwpen6xcd.streamlit.app/',
     github: 'https://github.com/mitul-bhatia/GEN_AI_LOAN_APPROVAL',
   },
   {
